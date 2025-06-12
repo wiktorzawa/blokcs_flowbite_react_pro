@@ -1,6 +1,12 @@
+"use client";
 import { Badge } from "flowbite-react";
+import dynamic from "next/dynamic";
 import Link from "next/link";
 import BLOCKS_CATEGORIES from "~/data/blocks-categories.json";
+
+const NoSSRComponent = dynamic(() => import("~/components/NoSSRComponent"), {
+  ssr: false,
+});
 
 export default function Home() {
   return (
@@ -37,7 +43,7 @@ function BlockCategoryCardsSection() {
           <Link
             key={title}
             href={`${categorySlug}/${slug}`}
-            className="h-64 cursor-pointer rounded-lg border border-gray-100 bg-white hover:border-white hover:shadow-lg dark:border-gray-700 dark:bg-gray-900 dark:hover:border-gray-600 dark:hover:shadow-lg-light md:h-80"
+            className="h-64 cursor-pointer rounded-lg border border-gray-100 bg-white hover:border-white hover:shadow-lg md:h-80 dark:border-gray-700 dark:bg-gray-900 dark:hover:border-gray-600 dark:hover:shadow-lg-light"
           >
             <article className="flex items-center justify-between rounded-t-md border-b border-gray-200 bg-gray-50 px-5 py-2.5 dark:border-gray-700 dark:bg-gray-700">
               <div className="text-left">
